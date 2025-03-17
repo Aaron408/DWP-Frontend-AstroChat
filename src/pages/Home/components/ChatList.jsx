@@ -1,3 +1,5 @@
+"use client";
+
 import UserMenu from "../../../components/UserMenu";
 import { FaSearch } from "react-icons/fa";
 
@@ -12,12 +14,12 @@ const Chats = Array(12)
     // isOnline: Math.random() > 0.5,
   }));
 
-const ChatList = ({ onSelectChat, selectedChatId }) => {
+const ChatList = ({ onSelectChat, selectedChatId, onViewChange }) => {
   return (
     <div className="flex flex-col h-full">
       <div className="p-4 flex justify-between items-center">
         <h1 className="text-2xl font-bold">Chats</h1>
-        <UserMenu />
+        <UserMenu onViewChange={onViewChange} />
       </div>
       <div className="p-4">
         <div className="relative">
@@ -44,7 +46,7 @@ const ChatList = ({ onSelectChat, selectedChatId }) => {
               {/* Avatar o círculo blanco */}
               {chat.avatar ? (
                 <img
-                  src={chat.avatar}
+                  src={chat.avatar || "/placeholder.svg"}
                   alt="Avatar"
                   className="w-10 h-10 rounded-full mr-3"
                 />

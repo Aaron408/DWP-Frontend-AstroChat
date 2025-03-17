@@ -28,8 +28,8 @@ const ChatView = ({ chat }) => {
         </div>
         <div className="flex space-x-2">
           {[
-            { icon: <FaPhone className="rotate-90 h-5 w-5" />, key: "phone" },
-            { icon: <FaVideo className="h-5 w-5" />, key: "video" },
+            // { icon: <FaPhone className="rotate-90 h-4 w-4" />, key: "phone" },
+            // { icon: <FaVideo className="h-5 w-5" />, key: "video" },
             {
               icon: <FiMoreVertical className="h-5 w-5" />,
               key: "more-vertical",
