@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { FaCamera } from "react-icons/fa";
 import { IoChevronBack } from "react-icons/io5";
 
+import { AuthContext } from "./AuthContext";
+
 const ProfileSection = ({ onBack }) => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="p-4 pt-16 space-y-6 h-full">
       <div className="flex items-center">
@@ -17,11 +21,11 @@ const ProfileSection = ({ onBack }) => {
       <div className="flex flex-col items-center space-y-4">
         <div className="relative">
           <div className="h-24 w-24 rounded-full bg-[#3A86FF] flex items-center justify-center text-[#E0E7FF] text-3xl font-bold border-4 border-[#3A86FF]">
-            UN
+            AC
           </div>
-          <button className="absolute bottom-0 right-0 rounded-full bg-[#FF6B6B] hover:bg-[#FF8C8C] p-2">
+          {/* <button className="absolute bottom-0 right-0 rounded-full bg-[#FF6B6B] hover:bg-[#FF8C8C] p-2">
             <FaCamera className="h-4 w-4 text-[#0A0F1C]" />
-          </button>
+          </button> */}
         </div>
       </div>
 
@@ -31,13 +35,7 @@ const ProfileSection = ({ onBack }) => {
           <input
             className="w-full px-3 py-2 bg-[#1A1F2C] border border-[#3A86FF] rounded-md text-[#E0E7FF] focus:outline-none focus:ring-[#3A86FF] focus:border-[#3A86FF]"
             placeholder="Tu nombre"
-          />
-        </div>
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-[#E0E7FF]">Info</label>
-          <input
-            className="w-full px-3 py-2 bg-[#1A1F2C] border border-[#3A86FF] rounded-md text-[#E0E7FF] focus:outline-none focus:ring-[#3A86FF] focus:border-[#3A86FF]"
-            placeholder="Hey! Estoy usando Astro Chat"
+            value={user.name}
           />
         </div>
         <div className="space-y-2">
@@ -45,9 +43,11 @@ const ProfileSection = ({ onBack }) => {
             Correo electrónico
           </label>
           <input
-            className="w-full px-3 py-2 bg-[#1A1F2C] border border-[#3A86FF] rounded-md text-[#E0E7FF] focus:outline-none focus:ring-[#3A86FF] focus:border-[#3A86FF]"
+            className="w-full px-3 py-2 bg-[#495269] border border-[#3A86FF] rounded-md text-[#E0E7FF] focus:outline-none focus:ring-[#3A86FF] focus:border-[#3A86FF]"
             placeholder="tu@ejemplo.com"
             type="email"
+            disabled={true}
+            value={user.userEmail}
           />
         </div>
         <div className="pt-4">

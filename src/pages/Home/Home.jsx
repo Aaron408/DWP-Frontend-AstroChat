@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import ChatList from "./components/ChatList";
 import ChatView from "./components/ChatView";
@@ -14,26 +12,21 @@ const Home = () => {
   const { selectedChat, selectChat } = useChat();
   const [currentView, setCurrentView] = useState("chats");
 
-  // Efecto para generar los elementos visuales (solo se ejecuta una vez al montar)
+  //Efecto para generar los elementos visuales
   useEffect(() => {
-    // Verificar si ya existen elementos para evitar duplicados
+    //Verificar si ya existen elementos para evitar duplicados
     const starsContainer = document.querySelector(".space-background");
 
-    // Limpiar elementos existentes si los hay
+    //Limpiar elementos existentes si los hay
     const existingStars = starsContainer.querySelectorAll(".star");
     const existingComet = starsContainer.querySelector(".comet");
     const existingPlanet = starsContainer.querySelector(".planet");
 
     if (existingStars.length > 0 || existingComet || existingPlanet) {
-      console.log(
-        "Elementos visuales ya existentes, no se generarán nuevamente"
-      );
       return;
     }
 
-    console.log("Generando elementos visuales por primera vez");
-
-    // Generación de estrellas en el background
+    //Generación de estrellas
     for (let i = 0; i < 100; i++) {
       const star = document.createElement("div");
       star.className = "star";
@@ -45,7 +38,7 @@ const Home = () => {
       starsContainer.appendChild(star);
     }
 
-    // Crear cometa
+    //Cometa
     const comet = document.createElement("div");
     comet.className = "comet";
     comet.style.top = "20%";

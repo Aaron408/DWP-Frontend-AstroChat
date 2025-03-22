@@ -1,5 +1,3 @@
-"use client";
-
 import UserMenu from "../../../components/UserMenu";
 import { FaSearch } from "react-icons/fa";
 
@@ -11,7 +9,7 @@ const Chats = Array(12)
     avatar: ``,
     lastMessage: "Último mensaje del chat...",
     timestamp: "12:34",
-    // isOnline: Math.random() > 0.5,
+    //isOnline: Math.random() > 0.5,
   }));
 
 const ChatList = ({ onSelectChat, selectedChatId, onViewChange }) => {

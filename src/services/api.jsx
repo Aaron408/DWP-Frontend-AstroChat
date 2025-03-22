@@ -1,12 +1,12 @@
-import axios from "axios"; 
+import axios from "axios";
 
 const getToken = () => {
-  const userData = localStorage.getItem("token");
-  return userData ? userData : null;
+  const userData = JSON.parse(localStorage.getItem("astroChatUser"));
+  return userData ? userData.token : null;
 };
 
 export const AuthApi = axios.create({
-  baseURL: "http://localhost:5001",
+  baseURL: "http://localhost:5000",
   headers: {
     Authorization: `Bearer ${getToken()}`,
     "Access-Control-Allow-Origin": "*",
@@ -25,6 +25,15 @@ export const ChatsApi = axios.create({
 
 export const UsersApi = axios.create({
   baseURL: "http://localhost:5003",
+  headers: {
+    Authorization: `Bearer ${getToken()}`,
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+  },
+});
+
+export const NotificationsApi = axios.create({
+  baseURL: "http://localhost:5004",
   headers: {
     Authorization: `Bearer ${getToken()}`,
     "Access-Control-Allow-Origin": "*",
@@ -54,8 +63,8 @@ const setupInterceptors = (apiInstance) => {
           error.response.status === 401 &&
           !error.config.url.includes("/login")
         ) {
-          localStorage.removeItem("token");
-          window.location.href = "/login";
+          localStorage.removeItem("astroChatUser");
+          window.location.href = "/";
         }
       }
       return Promise.reject(error);
@@ -66,3 +75,4 @@ const setupInterceptors = (apiInstance) => {
 setupInterceptors(AuthApi);
 setupInterceptors(UsersApi);
 setupInterceptors(ChatsApi);
+setupInterceptors(NotificationsApi);

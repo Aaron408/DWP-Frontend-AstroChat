@@ -1,6 +1,4 @@
-"use client";
-
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import {
   FaUser,
   FaCog,
@@ -9,7 +7,10 @@ import {
   FaSignOutAlt,
 } from "react-icons/fa";
 
+import { AuthContext } from "./AuthContext";
+
 const UserMenu = ({ onViewChange }) => {
+  const { logout } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
@@ -64,13 +65,13 @@ const UserMenu = ({ onViewChange }) => {
               <FaUser className="inline-block mr-2" />
               Perfil
             </button>
-            {/* <button
+            <button
               onClick={() => handleMenuItemClick("settings")}
               className="block w-full text-left px-4 py-2 text-sm text-[#E0E7FF] hover:bg-[#1A1F2C]"
             >
               <FaCog className="inline-block mr-2" />
               Ajustes
-            </button> */}
+            </button>
             <button
               onClick={() => handleMenuItemClick("notifications")}
               className="block w-full text-left px-4 py-2 text-sm text-[#E0E7FF] hover:bg-[#1A1F2C]"
@@ -86,7 +87,7 @@ const UserMenu = ({ onViewChange }) => {
               Soporte técnico
             </button>
             <button
-              onClick={() => handleMenuItemClick("signout")}
+              onClick={() => logout()}
               className="block w-full text-left px-4 py-2 text-sm text-[#FF6B6B] hover:bg-[#1A1F2C]"
             >
               <FaSignOutAlt className="inline-block mr-2" />

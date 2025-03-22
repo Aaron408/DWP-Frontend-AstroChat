@@ -1,5 +1,3 @@
-"use client";
-
 import { IoChevronBack } from "react-icons/io5";
 import { MdEmail, MdQuestionAnswer } from "react-icons/md";
 import { FaGlobe } from "react-icons/fa";
