@@ -1,3 +1,6 @@
+"use client";
+
+// Modificación del componente VerificationCode para manejar la recuperación de contraseña
 import { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaBoltLightning } from "react-icons/fa6";
@@ -19,7 +22,7 @@ const VerificationCode = () => {
   const location = useLocation();
   const { setUser } = useContext(AuthContext);
 
-  //Obtenemos los datos que vienen de login/registro
+  //Obtenemos los datos que vienen de login/registro/recuperación
   const { nombre, email, password, rememberMe, action } = location.state || {};
 
   useEffect(() => {
@@ -187,6 +190,17 @@ const VerificationCode = () => {
               }
               throw error;
             }
+          } else if (action === "recovery") {
+            // Si es recuperación de contraseña, redirigir a la página para establecer nueva contraseña
+            toast.success(
+              "Verificación exitosa. Ahora puedes crear una nueva contraseña."
+            );
+            navigate("/new-password", {
+              state: {
+                email,
+                verificationSuccess: true,
+              },
+            });
           }
         } else {
           setError("Código incorrecto o expirado");
@@ -239,8 +253,10 @@ const VerificationCode = () => {
     //Volver a la pantalla anterior según el tipo de acción
     if (action === "login") {
       navigate("/login");
-    } else {
+    } else if (action === "registration") {
       navigate("/signup");
+    } else if (action === "recovery") {
+      navigate("/recover-password");
     }
   };
 
@@ -254,6 +270,8 @@ const VerificationCode = () => {
       return "Verificación de seguridad";
     } else if (action === "registration") {
       return "Verifica tu cuenta";
+    } else if (action === "recovery") {
+      return "Recuperación de contraseña";
     }
     return "Verificación";
   };
@@ -342,7 +360,11 @@ const VerificationCode = () => {
                 disabled={isLoading || isResending}
               >
                 Volver{" "}
-                {action === "login" ? "al inicio de sesión" : "al registro"}
+                {action === "login"
+                  ? "al inicio de sesión"
+                  : action === "registration"
+                  ? "al registro"
+                  : "a recuperación de contraseña"}
               </button>
             </div>
           </div>

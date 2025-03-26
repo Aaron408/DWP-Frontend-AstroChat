@@ -47,14 +47,14 @@ const ProfileSection = ({ onBack }) => {
             placeholder="tu@ejemplo.com"
             type="email"
             disabled={true}
-            value={user.userEmail}
+            value={user.email}
           />
         </div>
-        <div className="pt-4">
+        {/* <div className="pt-4">
           <button className="w-full py-2 bg-[#3A86FF] hover:bg-[#E0E7FF] hover:text-[#0A0F1C] text-[#0A0F1C] font-medium rounded-md transition-colors">
             Guardar cambios
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

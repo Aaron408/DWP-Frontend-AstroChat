@@ -106,7 +106,7 @@ const SignUp = () => {
 
     // Validar formato de correo
     const emailRegex =
-      /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|uteq.edu.mx)$/;
+      /^[a-zA-Z0-9._%+-]+@(gmail\.com|hotmail\.com|uteq.edu.mx|utsjr.edu.mx)$/;
     if (!emailRegex.test(email)) {
       toast.error(
         "El correo debe ser una cuenta válida de Gmail, Hotmail o uteq.edu.mx."

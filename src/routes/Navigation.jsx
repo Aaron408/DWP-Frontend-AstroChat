@@ -6,6 +6,7 @@ import Home from "../pages/Home/Home";
 import NotFound from "../pages/NotFound/NotFound";
 import SignUp from "../pages/Register/Register";
 import PasswordRecovery from "../pages/Login/PasswordRecovery";
+import NewPassword from "../pages/Login/NewPassword";
 
 import VerificationCode from "../pages/Register/VerificationCode";
 
@@ -26,7 +27,8 @@ const Navigation = () => {
       <Route path="/login" element={user ? <Navigate to={roleRedirects[user.type] || "/"} /> : <Login />} />
       <Route path="/recover-password" element={user ? <Navigate to={roleRedirects[user.type] || "/"} /> : <PasswordRecovery />} />
       <Route path="/register" element={user ? <Navigate to={roleRedirects[user.type] || "/"} /> : <SignUp />} />
-      <Route path="/verification" element={<VerificationCode />} />
+      <Route path="/verification" element={user ? <Navigate to={roleRedirects[user.type] || "/"} /> : <VerificationCode />} />
+      <Route path="/new-password" element={user ? <Navigate to={roleRedirects[user.type] || "/"} /> : <NewPassword />}/>
       <Route element={<PrivateRoute allowedRoles={["mortal"]} roleRedirects={roleRedirects} />}>
         <Route path="/home" element={<Home />} />
       </Route>

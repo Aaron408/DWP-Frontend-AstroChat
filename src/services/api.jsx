@@ -14,6 +14,15 @@ export const AuthApi = axios.create({
   },
 });
 
+export const MessagesApi = axios.create({
+  baseURL: "http://localhost:5001",
+  headers: {
+    Authorization: `Bearer ${getToken()}`,
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+  },
+});
+
 export const ChatsApi = axios.create({
   baseURL: "http://localhost:5002",
   headers: {
@@ -23,7 +32,7 @@ export const ChatsApi = axios.create({
   },
 });
 
-export const UsersApi = axios.create({
+export const ContactsApi = axios.create({
   baseURL: "http://localhost:5003",
   headers: {
     Authorization: `Bearer ${getToken()}`,
@@ -73,6 +82,7 @@ const setupInterceptors = (apiInstance) => {
 };
 
 setupInterceptors(AuthApi);
-setupInterceptors(UsersApi);
+setupInterceptors(MessagesApi);
+setupInterceptors(ContactsApi);
 setupInterceptors(ChatsApi);
 setupInterceptors(NotificationsApi);
