@@ -13,7 +13,6 @@ const Home = () => {
   const [currentView, setCurrentView] = useState("chats");
 
   useEffect(() => {
-    //Verificar si ya existen elementos para evitar duplicados
     const starsContainer = document.querySelector(".space-background");
 
     //Limpiar elementos existentes si los hay
