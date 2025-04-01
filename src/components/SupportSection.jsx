@@ -1,6 +1,5 @@
 import { IoChevronBack } from "react-icons/io5";
 import { MdEmail, MdQuestionAnswer } from "react-icons/md";
-import { FaGlobe } from "react-icons/fa";
 
 const SupportSection = ({ onBack }) => {
   return (
@@ -18,7 +17,15 @@ const SupportSection = ({ onBack }) => {
       </div>
 
       <div className="space-y-4">
-        <button className="w-full flex items-start p-4 bg-[#1A1F2C] hover:bg-[#2A2F3C] rounded-md transition-colors text-left">
+        <button
+          className="w-full flex items-start p-4 bg-[#1A1F2C] hover:bg-[#2A2F3C] rounded-md transition-colors text-left"
+          onClick={() =>
+            window.open(
+              "https://mail.google.com/mail/?view=cm&fs=1&to=aaronreyes@inovaoptimize.com",
+              "_blank"
+            )
+          }
+        >
           <MdEmail className="h-6 w-6 text-[#3A86FF] mr-3 mt-1" />
           <div>
             <p className="font-medium text-[#E0E7FF]">Contáctanos</p>
@@ -28,7 +35,7 @@ const SupportSection = ({ onBack }) => {
           </div>
         </button>
 
-        <button className="w-full flex items-start p-4 bg-[#1A1F2C] hover:bg-[#2A2F3C] rounded-md transition-colors text-left">
+        {/* <button className="w-full flex items-start p-4 bg-[#1A1F2C] hover:bg-[#2A2F3C] rounded-md transition-colors text-left">
           <MdQuestionAnswer className="h-6 w-6 text-[#3A86FF] mr-3 mt-1" />
           <div>
             <p className="font-medium text-[#E0E7FF]">Centro de ayuda</p>
@@ -36,17 +43,9 @@ const SupportSection = ({ onBack }) => {
               Visita nuestras preguntas frecuentes
             </p>
           </div>
-        </button>
+        </button> */}
 
-        <button className="w-full flex items-start p-4 bg-[#1A1F2C] hover:bg-[#2A2F3C] rounded-md transition-colors text-left">
-          <FaGlobe className="h-6 w-6 text-[#3A86FF] mr-3 mt-1" />
-          <div>
-            <p className="font-medium text-[#E0E7FF]">Página web</p>
-            <p className="text-sm text-[#9CA3AF]">Visita nuestro sitio web</p>
-          </div>
-        </button>
-
-        <div className="mt-6 p-4 bg-[#1A1F2C] rounded-md">
+        {/* <div className="mt-6 p-4 bg-[#1A1F2C] rounded-md">
           <h3 className="text-lg font-medium text-[#E0E7FF] mb-2">
             Envíanos un mensaje
           </h3>
@@ -74,7 +73,7 @@ const SupportSection = ({ onBack }) => {
               Enviar mensaje
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

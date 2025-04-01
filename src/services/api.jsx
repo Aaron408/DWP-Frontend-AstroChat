@@ -6,7 +6,7 @@ const getToken = () => {
 };
 
 export const AuthApi = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://messages-auth.vercel.app",
   headers: {
     Authorization: `Bearer ${getToken()}`,
     "Access-Control-Allow-Origin": "*",
@@ -15,16 +15,7 @@ export const AuthApi = axios.create({
 });
 
 export const MessagesApi = axios.create({
-  baseURL: "http://localhost:5001",
-  headers: {
-    Authorization: `Bearer ${getToken()}`,
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-  },
-});
-
-export const ChatsApi = axios.create({
-  baseURL: "http://localhost:5002",
+  baseURL: "https://messages-messages.vercel.app",
   headers: {
     Authorization: `Bearer ${getToken()}`,
     "Access-Control-Allow-Origin": "*",
@@ -33,16 +24,7 @@ export const ChatsApi = axios.create({
 });
 
 export const ContactsApi = axios.create({
-  baseURL: "http://localhost:5003",
-  headers: {
-    Authorization: `Bearer ${getToken()}`,
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-  },
-});
-
-export const NotificationsApi = axios.create({
-  baseURL: "http://localhost:5004",
+  baseURL: "https://messages-contacts.vercel.app",
   headers: {
     Authorization: `Bearer ${getToken()}`,
     "Access-Control-Allow-Origin": "*",
@@ -84,5 +66,3 @@ const setupInterceptors = (apiInstance) => {
 setupInterceptors(AuthApi);
 setupInterceptors(MessagesApi);
 setupInterceptors(ContactsApi);
-setupInterceptors(ChatsApi);
-setupInterceptors(NotificationsApi);

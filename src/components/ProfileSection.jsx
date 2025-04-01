@@ -35,6 +35,7 @@ const ProfileSection = ({ onBack }) => {
           <input
             className="w-full px-3 py-2 bg-[#1A1F2C] border border-[#3A86FF] rounded-md text-[#E0E7FF] focus:outline-none focus:ring-[#3A86FF] focus:border-[#3A86FF]"
             placeholder="Tu nombre"
+            disabled={true}
             value={user.name}
           />
         </div>
