@@ -108,6 +108,7 @@ const Login = () => {
           <BsStars className="text-[#3A86FF] h-12 w-12" />
         </div>
       </div>
+      
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md relative z-10">
         <div className="bg-[#1A1F2C] py-8 px-4 shadow sm:rounded-lg sm:px-10 border border-[#3A86FF]">

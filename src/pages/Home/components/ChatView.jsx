@@ -19,14 +19,14 @@ const ChatView = ({ chat }) => {
   const messageQueueRef = useRef([]);
   const lastFetchRef = useRef(0);
 
-  // Implementación mejorada de WebSocket con cola de mensajes
+  //Implementación mejorada de WebSocket con cola de mensajes
   const { joinChat, leaveChat, isConnected } = useWebSocket(
     (data) => {
-      // Solo agregar el mensaje si es para este chat
+      //Solo agregar el mensaje si es para este chat
       if (data.chatId === chat.id) {
         const newMessage = data.message;
 
-        // Agregar a la cola si todavía estamos cargando mensajes iniciales
+        //Agregar a la cola si todavía estamos cargando mensajes iniciales
         if (isLoading) {
           messageQueueRef.current.push(newMessage);
         } else {
@@ -48,12 +48,12 @@ const ChatView = ({ chat }) => {
     }
   }, [chat?.id, joinChat, leaveChat]);
 
-  // Enfocar el input cuando el componente se monta
+  //Enfocar el input cuando el componente se monta
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
 
-  // Desplazarse al final cuando cambian los mensajes
+  //Desplazarse al final cuando cambian los mensajes
   useEffect(() => {
     if (messages.length > 0 && messagesContainerRef.current) {
       const container = messagesContainerRef.current;
@@ -61,17 +61,16 @@ const ChatView = ({ chat }) => {
     }
   }, [messages]);
 
-  // Cargar mensajes cuando cambia el chat seleccionado
+  //Cargar mensajes cuando cambia el chat seleccionado
   useEffect(() => {
     if (chat && chat.id) {
       fetchMessages();
       markMessagesAsRead();
 
-      // Solo configurar polling si WebSocket está desconectado
+      //Solo configurar polling si WebSocket está desconectado
       let intervalId;
       if (!isConnected) {
         intervalId = setInterval(() => {
-          // Solo actualizar si ha pasado suficiente tiempo desde la última actualización
           if (Date.now() - lastFetchRef.current > 10000) {
             fetchMessages(false);
           }
@@ -84,7 +83,7 @@ const ChatView = ({ chat }) => {
     }
   }, [chat, isConnected]);
 
-  // Procesar mensajes en cola después de la carga inicial
+  //Procesar mensajes en cola después de la carga inicial
   useEffect(() => {
     if (!isLoading && messageQueueRef.current.length > 0) {
       setMessages((prev) => [...prev, ...messageQueueRef.current]);
@@ -107,7 +106,7 @@ const ChatView = ({ chat }) => {
 
       setMessages(sortedMessages);
 
-      // Procesar mensajes que llegaron durante la carga
+      //Procesar mensajes que llegaron durante la carga
       if (messageQueueRef.current.length > 0) {
         setTimeout(() => {
           setMessages((prev) => [...prev, ...messageQueueRef.current]);
@@ -140,7 +139,7 @@ const ChatView = ({ chat }) => {
         content: newMessage.trim(),
       });
 
-      // Agregar el mensaje enviado a la lista local
+      //Agregar el mensaje enviado a la lista local
       const sentMessage = {
         id: response.data.messageId,
         senderId: JSON.parse(localStorage.getItem("astroChatUser")).id,
@@ -202,7 +201,7 @@ const ChatView = ({ chat }) => {
         className="flex-grow overflow-auto p-4 space-y-4"
       >
         {isLoading ? (
-          // Mostrar esqueletos de carga
+          //Mostrar esqueletos de carga
           [...Array(5)].map((_, i) => (
             <div
               key={i}

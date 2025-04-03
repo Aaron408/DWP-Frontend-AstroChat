@@ -9,7 +9,7 @@ import FriendRequestsModal from "../../../components/modals/FriendRequestsModal"
 
 const ChatList = ({ onSelectChat, selectedChatId, onViewChange }) => {
   const [contacts, setContacts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(""); 
   const [searchResults, setSearchResults] = useState([]);
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [showFriendCodeDialog, setShowFriendCodeDialog] = useState(false);
@@ -99,13 +99,13 @@ const ChatList = ({ onSelectChat, selectedChatId, onViewChange }) => {
     }
   };
 
-  // Function to search contacts
+  //Funcón para buscar contactos
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
 
     if (query.length >= 1) {
-      // Filter contacts locally
+      //Filtro local de contactos
       const filteredContacts = contacts.filter((contact) =>
         contact.name.toLowerCase().includes(query.toLowerCase())
       );
@@ -115,7 +115,7 @@ const ChatList = ({ onSelectChat, selectedChatId, onViewChange }) => {
     }
   };
 
-  // Function to send friend request
+  //Función para enviar solicitudes de amistad
   const handleSendFriendRequest = async (code) => {
     try {
       const response = await ContactsApi.post("/friend-request", {
@@ -132,13 +132,12 @@ const ChatList = ({ onSelectChat, selectedChatId, onViewChange }) => {
     }
   };
 
-  // Function to accept friend request
+  //Función para aceptar solicitudes de amistad
   const handleAcceptFriendRequest = async (senderId) => {
     try {
       await ContactsApi.post("/accept-friend-request", { senderId });
       toast.success("Friend request accepted");
 
-      // Update requests and contacts
       fetchFriendRequests();
       fetchContacts();
     } catch (error) {
@@ -149,13 +148,12 @@ const ChatList = ({ onSelectChat, selectedChatId, onViewChange }) => {
     }
   };
 
-  // Function to reject friend request
+  //Rechazar solicitudes
   const handleRejectFriendRequest = async (senderId) => {
     try {
       await ContactsApi.post("/reject-friend-request", { senderId });
       toast.success("Friend request rejected");
 
-      // Update requests
       fetchFriendRequests();
     } catch (error) {
       console.error("Error rejecting friend request:", error);
@@ -165,7 +163,7 @@ const ChatList = ({ onSelectChat, selectedChatId, onViewChange }) => {
     }
   };
 
-  // Determine which contacts to display (all or search results)
+  //Aplicar el filtro de busqueda para mostrar los contactos
   const displayedContacts = searchQuery.length >= 1 ? searchResults : contacts;
 
   return (

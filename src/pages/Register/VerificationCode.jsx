@@ -1,6 +1,3 @@
-"use client";
-
-// Modificación del componente VerificationCode para manejar la recuperación de contraseña
 import { useState, useRef, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FaBoltLightning } from "react-icons/fa6";

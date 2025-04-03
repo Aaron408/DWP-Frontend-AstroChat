@@ -7,7 +7,7 @@ export const useWebSocket = (onMessageReceived, onError) => {
   const connect = useCallback(() => {
     if (socketRef.current) return;
 
-    const socket = io("http://localhost:5001", {
+    const socket = io("https://message-app-olive.vercel.app", {
       auth: {
         token: JSON.parse(localStorage.getItem("astroChatUser"))?.token,
       },

@@ -54,7 +54,7 @@ const Home = () => {
     starsContainer.appendChild(planet);
   }, []);
 
-  // Manejar la tecla Escape para cerrar el chat
+  //Escape para cerrar el chat
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape" && selectedChat) {
